@@ -272,6 +272,31 @@ ExportAction::make()->exports([
 ])
 ```
 
+### Ignore Formatting
+
+When using `->fromForm()`/`->fromTable()` the formatting is resolved from your table or form definition. You can ignore the formatting altogher or for specific columsn by using `->ignoreFormatting()`:
+
+```php
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use pxlrbt\FilamentExcel\Columns\Column;
+
+ExportAction::make()->exports([
+    // Ignore all formatting
+    ExcelExport::make()->fromTable()->ignoreFormatting()
+    
+    // Ignore specific columns
+    ExcelExport::make()->fromTable()->ignoreFormatting([
+        'created_at', 'updated_at',
+    ]),
+    
+    // Ignore columns based on Closure
+    ExcelExport::make()->fromTable()->ignoreFormatting(
+        fn (Column $column) => Str::startsWith($column->getName(), 'customer_')
+    ),
+])
+```
+
 ### User input
 
 You can let the user pick a filename and writer type by using `->askForFilename()` and `->askForWriterType()`:
