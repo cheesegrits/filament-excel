@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "filament/filament": "^3.0.0-stable",
+        "filament/filament": "^3.0.0-alpha131",
         "maatwebsite/excel": "^3.1",
         "anourvalar/eloquent-serialize": "^1.2"
     },
@@ -40,5 +40,6 @@
     "scripts": {
         "pint": "vendor/bin/pint"
     },
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
